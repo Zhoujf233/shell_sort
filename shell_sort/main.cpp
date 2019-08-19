@@ -9,20 +9,45 @@
 #include <iostream>
 using namespace std;
 
+//void shell_sort(int* arr, int size)
+//{
+//    int gap,i,j;
+//    int temp;
+//    for(gap = size >> 1; gap > 0; gap = gap >> 1)
+//    {
+//        for(i = gap; i < size; i++)
+//        {
+//            temp = arr[i];
+//            for(j = i - gap; j >= 0 && arr[j] > temp; j -= gap)
+//            {
+//                arr[j + gap] = arr[j];
+//            }
+//            arr[j + gap] = temp;
+//        }
+//    }
+//}
+
 void shell_sort(int* arr, int size)
 {
-    int gap,i,j;
-    int temp;
-    for(gap = size >> 1; gap > 0; gap = gap >> 1)
+    int i,j,gap;
+    for(gap = size / 2; gap > 0; gap /= 2)//步长
     {
-        for(i = gap; i < size; i++)
+        for(i = 0; i < gap; i++)//直接插入排序
         {
-            temp = arr[i];
-            for(j = i - gap; j >= 0 && arr[j] > temp; j -= gap)
+            for(j = i + gap; j < size; j += gap)
             {
-                arr[j + gap] = arr[j];
+                if(arr[j] < arr[j - gap])
+                {
+                    int temp = arr[j];
+                    int k = j - gap;
+                    while(k >= 0 && arr[k] > temp)
+                    {
+                        arr[k + gap] = arr[k];
+                        k -= gap;
+                    }
+                    arr[k + gap] = temp;
+                }
             }
-            arr[j + gap] = temp;
         }
     }
 }
