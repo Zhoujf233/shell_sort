@@ -113,7 +113,7 @@ int main(int argc, const char * argv[])
     
     shell_sort(arr, size);
     
-    cout << "选择排序后顺序为：";
+    cout << "希尔排序后顺序为：";
     for(i = 0;i < size;i++)
     {
         cout<<arr[i]<<" ";
